@@ -1,7 +1,7 @@
 <?php
 function my_theme_enqueue_styles() {
 
-    $parent_style = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
+    $parent_style = 'parent-style'; // This is type-style | Type is Parent Theme
 
     wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'child-style',
@@ -13,7 +13,7 @@ function my_theme_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
 
-// Registering Custom Post Type [Post Type = Posters] 
+// Registering Custom Post Type [Post Type = Posters --> Capstone]
 function custom_post_type() {
 
 	$labels = array(
