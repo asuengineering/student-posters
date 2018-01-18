@@ -11,4 +11,7 @@
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
  Text Domain:  type-child
 */
- 
+
+.site-title a {
+  color: #990033;
+}
