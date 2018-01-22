@@ -1,4 +1,43 @@
 <?php
+
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+
+add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
+function crb_attach_theme_options() {
+    Container::make( 'theme_options', __( 'Theme Options', 'crb' ) )
+        ->add_fields( array(
+            Field::make( 'text', 'crb_text', 'Text Field' ),
+        ) );
+}
+
+/*
+  =========================================================================
+  Post Meta
+  =========================================================================
+*/
+
+//use Carbon_Fields\Field;
+//use Carbon_Fields\Container;
+
+add_action('carbon_fields_register_fields', 'crb_attach_post_meta' );
+function crb_attach_post_meta() {
+    Container::make('post_meta', __( 'Student(s) Information', 'crb' ) )
+        ->where('post_type', '=', 'posters' )
+        ->add_fields( array(
+            Field::make('text', 'crb_student1name', 'Student Name' ),
+            Field::make('textarea', 'crb_student1bio', 'Student Bio'),
+            Field::make('text', 'crb_student2name', 'Student Name' ),
+            Field::make('textarea', 'crb_student2bio', 'Student Bio'),
+        ) );
+}
+
+/*
+  =========================================================================
+  Child Theme Enqueue
+  =========================================================================
+*/
+
 function my_theme_enqueue_styles() {
 
     $parent_style = 'type-style'; // This is type-style | Type is Parent Theme
@@ -19,7 +58,7 @@ add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 */
 
 // Custom Post Type [Post Type = Posters --> Capstone]
-function custom_post_type() {
+function poster_custom_post_type() {
 
 	$labels = array(
 		'name'                  => _x( 'Posters', 'Post Type General Name', 'type-child' ),
@@ -27,7 +66,7 @@ function custom_post_type() {
 		'menu_name'             => __( 'Posters', 'type-child' ),
 		'name_admin_bar'        => __( 'Post Type', 'type-child' ),
 		'archives'              => __( 'Poster Archives', 'type-child' ),
-		'attributes'            => __( ' Attributes', 'type-child' ),
+		'attributes'            => __( 'Attributes', 'type-child' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'type-child' ),
 		'all_items'             => __( 'All Posters', 'type-child' ),
 		'add_new_item'          => __( 'Add New Poster', 'type-child' ),
@@ -61,7 +100,7 @@ function custom_post_type() {
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 5,
+    'menu_icon'             => 'dashicons-format-image',
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -73,7 +112,7 @@ function custom_post_type() {
 	register_post_type( 'posters', $args );
 
 }
-add_action( 'init', 'custom_post_type', 0 );
+add_action( 'init', 'poster_custom_post_type', 0 );
 
 
 /*
@@ -178,5 +217,5 @@ function publication_period_taxonomy() {
 
 }
 add_action( 'init', 'publication_period_taxonomy', 0 );
- 
+
 ?>
