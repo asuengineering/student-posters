@@ -15,3 +15,24 @@
 .site-title a {
   color: #990033;
 }
+
+.author-info {
+  padding:20px;
+  border:3px solid maroon;
+  background-color:#c4c4c4
+}
+
+.author-title {
+  color:green;
+}
+
+.author-bio {
+  color:maroon;
+}
+
+.entry-title {
+    padding: 0;
+    margin: 0;
+    color: blue;
+    line-height: 1.2;
+    text-align: center;
