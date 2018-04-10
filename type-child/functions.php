@@ -1,3 +1,5 @@
+
+
 <?php
 
 use Carbon_Fields\Container;
@@ -11,6 +13,33 @@ function crb_attach_theme_options() {
         ) );
 }
 
+/**
+ * Add a sidebar.
+ */
+function wpdocs_theme_slug_widgets_init() {
+    register_sidebar( array(
+        'name'          => __( 'Yasmine Sidebar', 'textdomain' ),
+        'id'            => 'sidebar-yasmine',
+        'description'   => __( 'Widgets in this area will be shown on all posts and pages.', 'textdomain' ),
+        'before_widget' => '<class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h4 class="widgettitle">',
+        'after_title'   => '</h3>',
+    ) );
+}
+add_action( 'widgets_init', 'wpdocs_theme_slug_widgets_init' );
+
+register_sidebar(
+	array(
+		'name'          => __( 'Sidebar Search', 'studio' ),
+		'id'            => 'sidebar-search',
+		'description'   => 'Search Sidebar',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="widgettitle">',
+        'after_title' => '</h3>'
+	)
+);
 /*
   =========================================================================
   Post Meta --> Student Information
@@ -37,19 +66,16 @@ function crb_attach_post_meta() {
   Child Theme Enqueue
   =========================================================================
 */
-
 function my_theme_enqueue_styles() {
-
     $parent_style = 'type-style'; // This is type-style | Type is Parent Theme
-
     wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'child-style',
         get_stylesheet_directory_uri() . '/style.css',
-        array( $parent_style )
+        array( $parent_style ),
+        wp_get_theme()->get('Version')
     );
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
-
 
 /*
   =========================================================================
@@ -93,7 +119,7 @@ function poster_custom_post_type() {
 		'label'                 => __( 'Posters', 'type-child' ),
 		'description'           => __( 'Post Type Description', 'type-child' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
 		'taxonomies'            => array( 'post_tag', 'topics', 'publication' ),
                                     // added 2 custom taxonomies here & deleted categories
 		'hierarchical'          => true,

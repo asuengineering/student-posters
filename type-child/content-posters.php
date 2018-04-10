@@ -36,30 +36,36 @@ $post_sidebar_position = get_theme_mod('post_sidebar_position', 'content-sidebar
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php type_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+	<!-- The .entry-footer was here -->
 
 </article><!-- #post-## -->
 
 <!-- FOR THE AUTHOR BIOS: be sure to translate all of the inline CSS here into youre child theme's style.css :-) -->
 <!-- This is just to show you whats possible! -->
+
+<h2> Submitted By: </h2>
 <div class="author-info">
     <div class="row">
         <div class="col-2 col-sm-2">
             <div class="author-avatar">
-                <img src="https://picsum.photos/60" />
+                <img src="https://print.asu.edu/sites/default/files/asu_fultonengineering_horiz_rgb_maroongold_600ppi.png" />
             </div>
         </div>
         <div class="col-10 col-sm-10">
             <div class="author-description">
                 <h3 class="author-title">
-                    <?php echo carbon_get_post_meta( get_the_ID(), 'crb_student1name' ); ?>
+                    <?php echo get_post_meta( get_the_ID(), 'student1name', true ); ?>
                 </h3>
                 <p class="author-bio">
-                    <?php echo carbon_get_post_meta( get_the_ID(), 'crb_student1bio' ); ?>
+                    <?php echo get_post_meta( get_the_ID(), 'student1bio', true ); ?>
                 </p><!-- .author-bio -->
+
+
             </div><!-- .author-description -->
         </div>
     </div>
 </div><!-- .author-info -->
+
+
+
+<!-- ADD THE IF STATEMENT FOR BIO2 -->

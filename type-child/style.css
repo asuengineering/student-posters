@@ -16,23 +16,126 @@
   color: #990033;
 }
 
-.author-info {
-  padding:20px;
-  border:3px solid maroon;
-  background-color:#c4c4c4
+.single-posters .author-info {
+  padding: 20px;
+  border: 3px solid #990033;
+  background-color: #c4c4c4;
 }
 
-.author-title {
-  color:green;
+.single-posters .author-title {
+  color: #8B0000;
 }
 
 .author-bio {
-  color:maroon;
+  color: #000000;
 }
 
 .entry-title {
     padding: 0;
     margin: 0;
-    color: blue;
+    color: #000000;
     line-height: 1.2;
     text-align: center;
+}
+
+.main-navbar {
+  background-color: #990033;
+}
+
+.main-navigation > ul > li > a {
+  color: #FFFFFF;
+}
+
+.main-navigation > ul > li > a:hover {
+  color: #FFD700;
+}
+
+@media screen and (min-width: 960px) {
+.content-area {
+    width: 73%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0 50px;
+    }
+    .sidebar {
+    width: 27%;
+    float: right;
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+.container {
+    max-width: 1200px;
+  }
+}
+
+.entry-content {
+  padding-top: 30px;
+}
+
+.left-half {
+  float: left;
+}
+
+.right-half {
+  float: right;
+}
+
+h3.widgettitle {
+    text-transform: uppercase;
+}
+
+h4 {
+    margin: 0px 0px 20px;
+}
+
+@media screen and (min-width: 960px) {
+  .main-navigation > ul > li.current-menu-item:before {
+    background-color: #FFF;
+  }
+}
+
+.main-navigation .current_page_item > a, .main-navigation .current-menu-item > a {
+    color: #FFF;
+}
+@media screen and (min-width: 960px) {
+  .site-title-centered .site-branding {
+    padding: 20px 0;
+}
+}
+article#post-127 {
+    /*border-style: solid;*/
+    border-radius: 40px;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+.gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border-color: #ccc;
+}
+
+@media only screen and (min-width: 641px) {
+  .gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type=submit] {
+    background-color: #8C1D40;
+    border-radius: 5px;
+}
+  }
+
+.poster-title {
+  font-size: 20px;
+}
+.poster-thumbnail {
+    width: 250px;
+  }
+
+.poster-container {
+    width: 260px;
+    height: 250px;
+    float: left;
+}
+.poster-container:hover {
+    transform: scale(1.3);
+}
